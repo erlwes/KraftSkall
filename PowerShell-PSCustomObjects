@@ -1,5 +1,3 @@
-# --- PSCustomObjects ---
-
 #Add all members one by one
 $Obj = New-Object PSObject
 $Obj | Add-Member -MemberType NoteProperty -Name Type -Value Apple
@@ -30,19 +28,3 @@ $Obj = [PSCustomObject]@{
         WeightKG = 0.2
     }
 }
-
-#OUTPUT:
-#PS C:\> $Obj
-#
-#Type  Colour Size
-#----  ------ ----
-#Apple Red    {[DiameterCM, 12], [WeightKG, 0,2]}
-#
-#PS C:\> $Obj.Size
-#
-#Name                           Value
-#----                           -----
-#DiameterCM                     12
-#WeightKG                       0,2
-#
-#PS C:\>
