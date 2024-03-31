@@ -1,7 +1,10 @@
 $Services = Get-Service
 
 #Normally
-$Service | {$_.Status -eq 'Running'} | select DisplayName
+$Services | Where-Object {$_.Status -eq 'Running'} | select DisplayName
+
+#Alias...
+$Services | ? {$_.Status -eq 'Running'} | select DisplayName
 
 #W00t O_o
-$Service.Where({$_.Status -eq 'Running'}).DisplayName 
+$Services.Where({$_.Status -eq 'Running'}).DisplayName
