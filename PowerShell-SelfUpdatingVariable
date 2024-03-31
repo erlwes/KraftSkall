@@ -1,0 +1,12 @@
+Get-PSBreakpoint | Remove-PSBreakpoint
+$global:reEvaluatedFrame = Set-PSBreakpoint -Variable reEvaluatedFrame -Mode read -Action {
+  $global:reEvaluatedFrame = ("The time is $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")")
+}
+
+#The content is thereafter dynamically re-evaluated/updated when calling the variable. Like so:
+
+#PS C:\> $global:reEvaluatedFrame
+#The time is 2024-03-31 22:20:48
+#PS C:\> $global:reEvaluatedFrame
+#The time is 2024-03-31 22:20:52
+#PS C:\>
