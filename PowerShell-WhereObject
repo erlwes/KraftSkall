@@ -1,0 +1,7 @@
+$Services = Get-Service
+
+#Normally
+$Service | {$_.Status -eq 'Running'} | select DisplayName
+
+#W00t O_o
+$Service.Where({$_.Status -eq 'Running'}).DisplayName 
