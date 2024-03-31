@@ -1,0 +1,16 @@
+
+#Splatting parameters is handy when a single line becomes too long and messy and avoid using ´ sign to make linebreaks in code.
+
+#Example with parameters on same line
+Get-ChildItem -Path $env:TEMP -Include "*.*" -Depth 0 -Recurse
+
+
+#Example with parameters in a hashtable.
+$params = @{
+    Path = $env:TEMP
+    Include = "*.*"
+    Depth = 0
+    Recurse = $true
+}
+
+Get-ChildItem @params
