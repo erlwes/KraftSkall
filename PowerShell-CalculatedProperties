@@ -1,7 +1,7 @@
 #Good for ...
 # 1. renaming property labels
 # 2. re-calculating property values
-# 3. expanding  nested properties
+# 3. expanding nested properties
 # 4. adding custom properties
 
 #Works with Format-Table, Format-list and Select-Object.
