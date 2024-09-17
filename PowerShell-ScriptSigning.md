@@ -1,4 +1,4 @@
-# Signing scripts with self-signed a certificate
+# Signing scripts with a self-signed certificate
 Example script for creating a self signed certificate for code-signing. The new cert defaults to 1-year validity period.
 
 ```PowerShell
