@@ -5,7 +5,7 @@
 $Subject = 'myCodeSigningCertificate'
 $Domain = 'myDomain.com'
 
-# CREATES A NEW CERTIFICATE TO USERS PERSONAL STORE, WITH PRIVATE KEY (FOR SIGNING)
+# CREATES A NEW CERTIFICATE TO USERS PERSONAL STORE, WITH PRIVATE KEY    (for signing)
 New-SelfSignedCertificate `
     -KeyUsage DigitalSignature `
     -KeySpec Signature `
@@ -19,7 +19,7 @@ New-SelfSignedCertificate `
 # GET THE NEW CERT FROM CERTIFICATE STORE
 $Cert = Get-ChildItem Cert:\CurrentUser\My\ | Where-Object {$_.Subject -match $Subject}
 
-# EXPORT THE CERTIFICATE TO FILE (PUBLIC KEY ONLY)
+# EXPORT THE CERTIFICATE TO FILE    (only public key is exported)
 Export-Certificate -Cert $Cert -FilePath .\$Subject.cer -Force
 
 # IMPORT THE CERT WITH PUBLIC KEY TO USERS TRUSTED PUBLISHERS   (for validation)
