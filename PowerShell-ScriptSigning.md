@@ -1,6 +1,8 @@
-# Example script for creating a self signed certificate for code-signing.
-# The new cert defaults to 1-year validity period.
+# Signing scripts with self-signed a certificate
+Example script for creating a self signed certificate for code-signing.
+The new cert defaults to 1-year validity period.
 
+```PowerShell
 # CHANGE ME
 $Subject = 'myCodeSigningCertificate'
 $Domain = 'myDomain.com'
@@ -32,12 +34,18 @@ Set-AuthenticodeSignature .\script.ps1 -Certificate $Cert
 # TEST    (notice a signature has been appended to the script content)
 Set-ExecutionPolicy AllSigned
 & .\script.ps1
+```
 
-# WARNING WHEN RUNNING SCRIPT?
-# If certs is not present in trusted publishers, you will get this warning: "... is published by CN=myCodeSigningCertificate and is not trusted on your system"
-# If you choose [A] - Always run, then script will be imported into the users "Trusted Publishers" certificate store, and the warning will thefore not show the next time
+#### Warning when running script?
+If certs is not present in trusted publishers, you will get this warning: "... is published by CN=myCodeSigningCertificate and is not trusted on your system"
+If you choose [A] - Always run, then script will be imported into the users "Trusted Publishers" certificate store, and the warning will thefore not show the next time
 
-# CHANGES TO SCRIPT?
-# Whenever there are changes in the script, the hash of the file will not longer match the hash stored in the digital signature, and the script will need to be signed again.
-# You dont need to remove previous signature from script, PowerShell will figure it out and replace the old signature.
-# The signature has to be at the end of the script. You can not move it, and then sign it again to account for new hash (I tried, and it failed).
+#### Make changes to script?
+Whenever there are changes in the script, the hash of the file will not longer match the hash stored in the digital signature, and you will get this error:
+```
+.\script.ps1: File C:\Temp\script.ps1 cannot be loaded. The contents of file C:\Temp\script.ps1 might have been changed by an unauthorized user or process, because the hash of the file does not match the hash stored in the digital signature. The script cannot run on the specified system. For more information, run Get-Help about_Signing..
+```
+
+The script will need to be signed again.
+You dont need to remove previous signature from script, PowerShell will figure it out and replace the old signature.
+The signature has to be at the end of the script. You can not move it, and then sign it again to account for new hash (I tried, and it failed).
