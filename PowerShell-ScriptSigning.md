@@ -1,6 +1,5 @@
 # Signing scripts with self-signed a certificate
-Example script for creating a self signed certificate for code-signing.
-The new cert defaults to 1-year validity period.
+Example script for creating a self signed certificate for code-signing. The new cert defaults to 1-year validity period.
 
 ```PowerShell
 # CHANGE ME
@@ -54,5 +53,5 @@ The script cannot run on the specified system. For more information, run Get-Hel
 ```
 
 The script will need to be signed again.
-You dont need to remove previous signature from script, PowerShell will figure it out and replace the old signature.
+You don't need to remove previous signature from script, PowerShell will figure it out and replace the old signature.
 The signature has to be at the end of the script. You can not move it, and then sign it again to account for new hash (I tried, and it failed).
