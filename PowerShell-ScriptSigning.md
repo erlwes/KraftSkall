@@ -36,14 +36,21 @@ Set-ExecutionPolicy AllSigned
 & .\script.ps1
 ```
 
-#### Warning when running script?
-If certs is not present in trusted publishers, you will get this warning: "... is published by CN=myCodeSigningCertificate and is not trusted on your system"
+### Warning when running script?
+If the certs used for signing the script is not present in trusted publishers, you will get this warning:
+```
+Do you want to run software from this untrusted publisher?
+File C:\Temp\script.ps1 is published by CN=myCodeSigningCertificate and is not trusted on your system. Only run scripts from trusted publishers.
+[V] Never run  [D] Do not run  [R] Run once  [A] Always run  [?] Help (default is "D"):
+```
 If you choose [A] - Always run, then script will be imported into the users "Trusted Publishers" certificate store, and the warning will thefore not show the next time
 
-#### Make changes to script?
+### Make changes to script?
 Whenever there are changes in the script, the hash of the file will not longer match the hash stored in the digital signature, and you will get this error:
 ```
-.\script.ps1: File C:\Temp\script.ps1 cannot be loaded. The contents of file C:\Temp\script.ps1 might have been changed by an unauthorized user or process, because the hash of the file does not match the hash stored in the digital signature. The script cannot run on the specified system. For more information, run Get-Help about_Signing..
+.\script.ps1: File C:\Temp\script.ps1 cannot be loaded.
+The contents of file C:\Temp\script.ps1 might have been changed by an unauthorized user or process, because the hash of the file does not match the hash stored in the digital signature.
+The script cannot run on the specified system. For more information, run Get-Help about_Signing..
 ```
 
 The script will need to be signed again.
