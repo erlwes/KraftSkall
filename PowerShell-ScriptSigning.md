@@ -35,7 +35,7 @@ Set-ExecutionPolicy AllSigned
 & .\script.ps1
 ```
 
-### Warning when running script?
+### Warning when running script? -> Import cert
 If the certs used for signing the script is not present in trusted publishers, you will get this warning:
 ```
 Do you want to run software from this untrusted publisher?
@@ -44,7 +44,7 @@ File C:\Temp\script.ps1 is published by CN=myCodeSigningCertificate and is not t
 ```
 If you choose [A] - Always run, then script will be imported into the users "Trusted Publishers" certificate store, and the warning will thefore not show the next time
 
-### Make changes to script?
+### Script changed? -> Sign it again
 Whenever there are changes in the script, the hash of the file will not longer match the hash stored in the digital signature, and you will get this error:
 ```
 .\script.ps1: File C:\Temp\script.ps1 cannot be loaded.
@@ -54,4 +54,6 @@ The script cannot run on the specified system. For more information, run Get-Hel
 
 The script will need to be signed again.
 You don't need to remove previous signature from script, PowerShell will figure it out and replace the old signature.
-The signature has to be at the end of the script. You can not move it, and then sign it again to account for new hash (I tried, and it failed).
+
+### Move the signature to another location in script? -> Nopes
+The signature has to be at the end of the script. You can not move it, and then sign it again to account for new hash (I tried, and it failed)
