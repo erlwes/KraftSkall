@@ -83,6 +83,14 @@ $p = 0
 $StartTime = (Get-Date)
 While ($p -le 100) {
     Start-Sleep -Seconds 0.05
-    Show-ProgressBar -Percentage $p -BarWidth 30 -Task 'Counting sheeps' -StartTime $StartTime -EmojiMode -Color Red
+    Show-ProgressBar -Percentage $p -BarWidth 30 -Task 'Counting sheeps' -StartTime $StartTime -EmojiMode
+    $p = ($p + 2)
+}
+
+$p = 0
+$StartTime = (Get-Date)
+While ($p -le 100) {
+    Start-Sleep -Seconds 0.05
+    Show-ProgressBar -Percentage $p -BarWidth 30 -Task 'Counting sheeps' -StartTime $StartTime -Color Red
     $p = ($p + 2)
 }
