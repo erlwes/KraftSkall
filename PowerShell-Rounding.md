@@ -1,10 +1,17 @@
 # ROUNDING
-#PS C:\> $a = 200 / 66
-#PS C:\> [math]::Round($a,2)
-#3,03
+```PowerShell
+$a = 200 / 66
+[math]::Round($a,2)
+```
+
+### Output
+```
+3,03
+```
 
 
 # PRACTICAL EXAMPLE:
+```PowerShell
 $Drives = @()
 Get-PSDrive -PSProvider FileSystem -Name C, D | select Name, Used, Free | % {
     $Obj = [PSCustomObject]@{
@@ -17,15 +24,19 @@ Get-PSDrive -PSProvider FileSystem -Name C, D | select Name, Used, Free | % {
     $Drives += $Obj
 }
 $Drives
+```
 
-#Name           : C
-#TotalGB        : 299,4
-#UsedGB         : 186,44
-#FreeGB         : 112,95
-#FreePercentage : 37,73
+### Output
+```
+Name           : C
+TotalGB        : 299,4
+UsedGB         : 186,44
+FreeGB         : 112,95
+FreePercentage : 37,73
 
-#Name           : D
-#TotalGB        : 4095,98
-#UsedGB         : 1086,22
-#FreeGB         : 3009,76
-#FreePercentage : 73,48
+Name           : D
+TotalGB        : 4095,98
+UsedGB         : 1086,22
+FreeGB         : 3009,76
+FreePercentage : 73,48
+```
