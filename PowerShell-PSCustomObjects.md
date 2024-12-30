@@ -13,11 +13,13 @@ $Obj = New-Object PSObject -property @{
     Colour = 'Red'
 }
 
-#Easiest?
+### Easiest?
+```PowerShell
 $Obj = [PSCustomObject]@{
     Type = 'Apple'
     Colour = 'Red'
 }
+```
 
 #Example with nested properties
 $Obj = [PSCustomObject]@{
