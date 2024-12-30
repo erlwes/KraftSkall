@@ -1,3 +1,5 @@
+### Function
+```PowerShell
 Function Show-ProgressBar {
     param(
         [int]$Percentage,
@@ -77,7 +79,25 @@ Function Show-ProgressBar {
     Write-Host -NoNewline "] $Task - $Percentage% $remainingText          "
     # Added extra space after $remainingText to overwrite previous elapsed time when done.
 }
+```
 
+### Example 1 - Color Red
+![image](https://github.com/user-attachments/assets/b3330cde-f2a3-4f04-8bd3-4769eee22843)
+
+```PowerShell
+$p = 0
+$StartTime = (Get-Date)
+While ($p -le 100) {
+    Start-Sleep -Seconds 0.05
+    Show-ProgressBar -Percentage $p -BarWidth 30 -Task 'Counting sheeps' -StartTime $StartTime -Color Red
+    $p = ($p + 2)
+}
+```
+
+### Example 2 - Emoji-mode
+![image](https://github.com/user-attachments/assets/506ca9ff-5983-4405-8e76-febed99cea14)
+
+```PowerShell
 #Test loop...
 $p = 0
 $StartTime = (Get-Date)
@@ -86,11 +106,4 @@ While ($p -le 100) {
     Show-ProgressBar -Percentage $p -BarWidth 30 -Task 'Counting sheeps' -StartTime $StartTime -EmojiMode
     $p = ($p + 2)
 }
-
-$p = 0
-$StartTime = (Get-Date)
-While ($p -le 100) {
-    Start-Sleep -Seconds 0.05
-    Show-ProgressBar -Percentage $p -BarWidth 30 -Task 'Counting sheeps' -StartTime $StartTime -Color Red
-    $p = ($p + 2)
-}
+```
