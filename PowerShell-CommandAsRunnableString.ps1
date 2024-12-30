@@ -17,7 +17,7 @@ $Obj | ForEach-Object {
     $Alias = $_.Alias -replace '^', '"' -replace '$', '"'
     $SMTP = $_.SMTP -replace '^', '"' -replace '$', '"'
 
-    $String = "New-DynamicDistributionGroup -Name $DisplayName -DisplayName $DisplayName -RecipientFilter $Filter -Alias $Alias -PrimarySmtpAddress $SMTP -Confirm:$false"
+    $String = "New-DynamicDistributionGroup -Name $DisplayName -DisplayName $DisplayName -RecipientFilter $Filter -Alias $Alias -PrimarySmtpAddress $SMTP -Confirm:`$false"
     $Commands += $String
 }
 
