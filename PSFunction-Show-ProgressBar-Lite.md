@@ -54,3 +54,7 @@ $Object | ForEach-Object {
     [decimal]$Percent += [decimal](100 / $Object.count)
 }
 ```
+
+
+### Visual example
+![image](https://github.com/user-attachments/assets/173eae21-1eef-4400-afc7-0a7b3817c351)
