@@ -1,4 +1,4 @@
-Calculated properties
+# Calculated properties
 
 This is usefull when ...
 1. renaming property labels
