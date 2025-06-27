@@ -10,6 +10,9 @@ ipconfig /displaydns
 #Get loaded assembly
 [System.AppDomain]::CurrentDomain.GetAssemblies() | Where-Object -FilterScript { $_.Location } | Sort-Object -Property FullName
 
+#Remove empty lines
+(gc data.txt) | ? { -not [String]::IsNullOrWhiteSpace($_) } | sc data.txt
+
 #Install ISE
 Get-WindowsCapability -Name Microsoft.Windows.PowerShell.ISE~~~~0.0.1.0 -Online | Add-WindowsCapability -Online -Verbose
 
