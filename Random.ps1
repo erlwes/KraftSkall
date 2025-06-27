@@ -3,7 +3,11 @@ arp -a
 
 Get-NetNeighbor -AddressFamily IPv4 | select -ExpandProperty IPAddress -Unique
 (arp -a | select -Skip 3) -replace '..-..-..-..-..-..' -replace "(static|dynamic)" -replace '\s'
-   
+
+
+#Filter CIM
+Get-CimInstance -ClassName Win32_Process -Filter "Name like '%services%' OR Name like '%Mfe%'"
+
 Get-DnsClientCache
 ipconfig /displaydns
 
