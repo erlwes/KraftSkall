@@ -101,7 +101,7 @@ $Plot.Axes.Bottom.TickGenerator = [ScottPlot.TickGenerators.NumericManual]::new(
 
 
 # Save Image as a file? No, not today.
-#$Plot.SavePng("C:\script\ScottPlot5\PSTest\servers_bars_v5.png", 2000, 1500)
+#$Plot.SavePng("C:\temp\bars.png", 900, 600)
 
 # Get Image bytes
 [byte[]]$pngBytes = $Plot.GetImageBytes(900, 600)
