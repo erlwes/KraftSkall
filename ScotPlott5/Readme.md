@@ -14,6 +14,10 @@
 ### Output from ScatterCart.ps1
 <img width="574" height="343" alt="image" src="https://github.com/user-attachments/assets/80501881-57e6-441e-84c9-d56061f51dca" />
 
+### Output from ScatterChartTempOslo
+<img width="1006" height="358" alt="image" src="https://github.com/user-attachments/assets/0fd4abcc-5c96-41f8-a5c5-722e6a27e6b6" />
+
+
 ### Fun with Sixel
 ```PowerShell
 Invoke-WebRequest -Uri "https://www.tu.no/tegneserier/lunch" | select -ExpandProperty images | ? {$_.OuterHTML -match 'lunch'} | select -ExpandProperty src | % {ConvertTo-Sixel -Url $_}
