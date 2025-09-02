@@ -3,6 +3,7 @@
 ### Test setup
 1. ScotPlott 5.0.56 built with dotnet 10 (https://scottplot.net/quickstart/powershell/)
 2. Tests ran in PowerShell 7.5.0 with Sixel 0.5.0
+3. Windows 11 24H2
 <img width="503" height="315" alt="image" src="https://github.com/user-attachments/assets/847d7135-bebf-4941-ad5e-7de387380063" />
 
 ### Output from BarChartExample.ps1
