@@ -23,3 +23,6 @@
 ```PowerShell
 Invoke-WebRequest -Uri "https://www.tu.no/tegneserier/lunch" | select -ExpandProperty images | ? {$_.OuterHTML -match 'lunch'} | select -ExpandProperty src | % {ConvertTo-Sixel -Url $_}
 ```
+
+### Sixel on server OS
+To get Sixel running on Windows server OS, on would first have to install Windows Terminal. Terminal runs fine on server 2022.
