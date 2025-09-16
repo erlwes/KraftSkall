@@ -18,8 +18,8 @@ Function Get-CAARecordCloudFlare {
         break
     }
     
-    if ($Records) {        
-        $HexString = $Records.Data
+    foreach ($Rec in $Records) {       
+        $HexString = $Rec.Data
         $Hex = ($HexString -split ' ')[2..($HexString.Split(' ').Length - 1)]
         $Bytes = $Hex | ForEach-Object { [Convert]::ToByte($_,16) }
 
@@ -29,8 +29,8 @@ Function Get-CAARecordCloudFlare {
         $Value = [System.Text.Encoding]::ASCII.GetString($Bytes[(2+$TagLen)..($Bytes.Length-1)])
 
         [PSCustomObject]@{
-            Name = $Records.name
-            TTL = $Records.TTL
+            Name = $Rec.name
+            TTL = $Rec.TTL
             Flags = $Flags
             Tag   = $Tag
             Value = $Value
@@ -55,11 +55,11 @@ function Get-CAARecordGoogle {
         break
     }
 
-    if ($Records) {
-        $Parts = $Records.data -split ' ',3
+    foreach ($Rec in $Records) {
+        $Parts = $Rec.data -split ' ',3
         [PSCustomObject]@{
-            Name  = $Records.name.TrimEnd('.')
-            TTL   = $Records.TTL
+            Name  = $Rec.name.TrimEnd('.')
+            TTL   = $Rec.TTL
             Flags = [int]$Parts[0]
             Tag   = $Parts[1]
             Value = $Parts[2].Trim('"')
