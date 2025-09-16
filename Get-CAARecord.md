@@ -1,7 +1,9 @@
-# Two different providers that gives CAA DNS Records (Certificate Authority Authorization).
-# Used to prevent unauthorized certificate issuance, by restricting issuer for the given domain.
+## Certificate Authority Authorization DNS records
 
-# CloudFlare.. returns hex-string. Start removed, and splitted into flags, tags and values.
+Two different providers that gives CAA DNS Records (Certificate Authority Authorization).
+Used to prevent unauthorized certificate issuance, by restricting issuer for the given domain.
+
+CloudFlare.. returns hex-string. Start removed, and splitted into flags, tags and values.
 ```PowerShell
 Function Get-CAARecordCloudFlare {
     param(
@@ -38,7 +40,7 @@ Function Get-CAARecordCloudFlare {
 ```
 
 
-# Google.. returned as string, only need to split.
+Google.. returned as string, only need to split.
 ```PowerShell
 function Get-CAARecordGoogle {
     param(
