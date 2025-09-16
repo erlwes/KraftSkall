@@ -3,6 +3,3 @@
 Kraft = Power
 
 Skall = Shell
-
-
-There you go.
