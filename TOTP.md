@@ -44,7 +44,7 @@ Function Get-TOTP {
         [int]$Digits = 6,
         [int]$Interval = 30,
         [ValidateSet('SHA1','SHA256','SHA512')]
-        [string]$Algo = 'SHA512'   # optional: pick a hash algo
+        [string]$Algo = 'SHA1'   # optional: pick a hash algo
     )
 
     # Convert secret to byte array
@@ -60,9 +60,9 @@ Function Get-TOTP {
         $StepBytes = [BitConverter]::GetBytes([System.Net.IPAddress]::HostToNetworkOrder($Step))
 
         switch ($Algo) {
-            'SHA1'   {$hmac = [System.Security.Cryptography.HMACSHA1]::new($KeyBytes)}
-            'SHA256' {$hmac = [System.Security.Cryptography.HMACSHA256]::new($KeyBytes)}
-            default  {$hmac = [System.Security.Cryptography.HMACSHA512]::new($KeyBytes)}
+            'default' {$hmac = [System.Security.Cryptography.HMACSHA1]::new($KeyBytes)}
+            'SHA256'  {$hmac = [System.Security.Cryptography.HMACSHA256]::new($KeyBytes)}
+            'SHA512'  {$hmac = [System.Security.Cryptography.HMACSHA512]::new($KeyBytes)}
             
         }
 
