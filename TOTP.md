@@ -60,7 +60,7 @@ Function Get-TOTP {
         $StepBytes = [BitConverter]::GetBytes([System.Net.IPAddress]::HostToNetworkOrder($Step))
 
         switch ($Algo) {
-            'default' {$hmac = [System.Security.Cryptography.HMACSHA1]::new($KeyBytes)}
+            default {$hmac = [System.Security.Cryptography.HMACSHA1]::new($KeyBytes)}
             'SHA256'  {$hmac = [System.Security.Cryptography.HMACSHA256]::new($KeyBytes)}
             'SHA512'  {$hmac = [System.Security.Cryptography.HMACSHA512]::new($KeyBytes)}
             
