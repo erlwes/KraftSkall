@@ -22,6 +22,8 @@
 ### Fun with Sixel
 ```PowerShell
 Invoke-WebRequest -Uri "https://www.tu.no/tegneserier/lunch" | select -ExpandProperty images | ? {$_.OuterHTML -match 'lunch'} | select -ExpandProperty src | % {ConvertTo-Sixel -Url $_}
+
+ConvertTo-Sixel -Url "https://images.squarespace-cdn.com/content/v1/5ec1b690abe5b9359ada2907/0d255ad9-d876-413d-b90f-74a178a822f6/CURIOUS+CREATURE.png?format=500w"
 ```
 
 ### Sixel on server OS
