@@ -1,4 +1,4 @@
-# Security Baselines - Oppsett Windows server 2022
+# Security Baselines - 2022/2025 member servers
 
 ```PwSh
 # Install module
