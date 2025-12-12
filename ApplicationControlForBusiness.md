@@ -63,6 +63,11 @@ Set-CIPolicyIdInfo -FilePath $policyPath -SupplementsBasePolicyID $base
 Set-OSConfigDesiredConfiguration -Scenario AppControl -Name Policies -Value $policyPath
 ```
 
+### Check status of effective policies and their bases
+```Pwsh
+(citool -lp -j | ConvertFrom-Json).policies | select BasePolicyID, FriendlyName, VersionString, IsEnforced | Sort-Object BasePolicyID
+```
+
 ### Enforce - when all supplemental policies are made for non-windows applications, and 3076 events are gone from logs -> Enforce
 ```PwSh
 # Application Control for Business - Enforced
