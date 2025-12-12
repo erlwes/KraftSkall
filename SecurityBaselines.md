@@ -21,7 +21,10 @@ if $($ServerEdition -match 'Server 2025') {
     Set-OSConfigDesiredConfiguration -Scenario $Scenario -Name MessageTextUserLogonTitle -Value ''
 }
 
-# Run GPUpdate, so that domain policy instantly will revert some changes, if there are "conflicts", then check compliance:
+# Run GPUpdate, so that domain policy instantly will revert some changes, if there are "conflicts". Consider a reboot.
+GPUpdate /force
+
+# Then check compliance (compare local settings vs. security baselines)
 $SecurityStatus = Get-OSConfigDesiredConfiguration -Scenario $Scenario | Select-Object `
     Name,
     @{N="Severity";E={$_.Compliance.Severity}},
@@ -29,6 +32,8 @@ $SecurityStatus = Get-OSConfigDesiredConfiguration -Scenario $Scenario | Select-
     @{N="Reason";E={$_.Compliance.Reason}}    
 
 $SecurityStatus | ? {$_.Status -ne 'Compliant'} | Format-Table * -AutoSize -Wrap
+
+# If Critical settings are reverted by domain policies, consider hardening the GPO.
 ```
 
 Source: https://learn.microsoft.com/en-us/windows-server/security/osconfig/osconfig-how-to-configure-app-control-for-business?tabs=configure%2Cview
