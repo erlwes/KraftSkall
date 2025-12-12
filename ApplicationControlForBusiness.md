@@ -65,6 +65,7 @@ Set-OSConfigDesiredConfiguration -Scenario AppControl -Name Policies -Value $pol
 
 ### Check status of effective policies and their bases
 ```Pwsh
+# citool is present on windows server 2025, not 2022.
 (citool -lp -j | ConvertFrom-Json).policies | select BasePolicyID, FriendlyName, VersionString, IsEnforced | Sort-Object BasePolicyID
 ```
 
