@@ -58,4 +58,23 @@ Average           : 0.45215
 
 In this example LINQ is ~1897 times faster
 
+
+
+## Casting PowerShell arrays to an IEnumerable<T> object
+We may already have an existing array that we would like to use with LINQ, and in these cases LINQ provides a casting method that returns a usable objects which implements IEnumerable<T>.
+
+$Numbers = @(1, 2, 3, 4, 5)
+$GenericNumbers = [Linq.Enumerable]::Cast[int]($Numbers)
+
+### We can now use LINQ
+PS C:\> [Linq.Enumerable]::Average($GenericNumbers)
+3
+
+PS C:\> $GenericNumbers.GetType()
+
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
+False    False    <CastIterator>d__68`1                    System.Object
+
+
 Source: https://xkln.net/blog/using-net-with-powershell/
