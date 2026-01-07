@@ -29,6 +29,27 @@ $PSObject = foreach ($line in $Clean) {
     }
 }
 $PSObject
+
+
+# Or filter on time (only last hour etc)
+$Events = (Get-WinEvent -LogName "Microsoft-Windows-CodeIntegrity/Operational" | ? {
+    $_.TimeCreated -gt (Get-Date).AddHours(-1)-and $_.Id -match "(3076|3077)"
+})
+$Clean = ($Events | select -ExpandProperty Message) `
+    -replace 'Code Integrity determined that a process ' `
+    -replace ' attempted to load ', ';' `
+    -replace 'that did not meet the Enterprise signing level requirements or violated code integrity policy' `
+    -replace '. However, due to code integrity auditing policy, the image was allowed to load.' `
+    -replace '\(Policy ID:{.+}\)'
+
+$PSObject = foreach ($line in $Clean) {
+    $parts = $line -split ";"
+    [PSCustomObject]@{
+        Process = $parts[0]
+        Loaded = $parts[1]
+    }
+}
+$PSObject
 ```
 
 ### Create rules from eventlogs?
