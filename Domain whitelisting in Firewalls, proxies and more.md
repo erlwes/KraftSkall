@@ -1,7 +1,7 @@
 
 How to figure out what domains, url, fqdn that needs to be allowed for a web-page or application.
 
-# Webpages
+## For webpages - use built in developer tools
 
 ### In your browser - collect HAR-file
 1. Open browser
@@ -21,14 +21,20 @@ $urls | Foreach-Object {$_.split('/')[2]} | Group-Object -NoElement | Sort-Objec
 <img width="1145" height="289" alt="image" src="https://github.com/user-attachments/assets/72cc4883-849f-4bef-8f10-439257d89705" />
 
 
-# Applications
+## For applications - check dns cache and netstat
 
-1. Use fiddler or BURP
-2. Check DNS Cache
+If we dont want to install Fiddler, BURP or Wireshark, we can ...
+
+
+### Check DNS Cache
 ```Pwsh
-Clear-DnsClientCache -> run application -> Get-DnsClientCache (helps finding relevant domains for application)
+Clear-DnsClientCache
+# Run the application
+Get-DnsClientCache
+# Se what domains that where resolved
 ```
-4. Monitor TCP-connections for a given process, using PowerShell
+
+### Monitor TCP-connections for a given process (netstat -ano)
 ```PwSh
 $processName = 'msedge'
 $Connections = $null
@@ -44,3 +50,11 @@ While ($true) {
     }    
 }
 ```
+
+## What about hardcoded IP-adresses?
+!_Given that the communication was recently established_!
+
+One should be able to diff ARP-table vs. DNS-client cache.
+If the computer communicates with IPs that are not in DNS-cache, but is present in ARP
+
+it _could_ mean that this is a hardcoded value in config file, ODBC or elsewhere 🤷🏻‍♂️
