@@ -1,5 +1,5 @@
 
-How to figure out what domains, url, fqdn that needs to be allowed for a vertant web-page or application.
+How to figure out what domains, url, fqdn that needs to be allowed for a web-page or application.
 
 # Webpages
 
