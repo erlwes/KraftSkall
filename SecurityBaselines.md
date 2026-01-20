@@ -6,8 +6,8 @@ Install-Module -Name Microsoft.OSConfig -Scope AllUsers -Repository PSGallery -F
 
 # Security Baselines - Server 2022 or 2025 for domain joined member servers
 $ServerEdition = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ProductName
-if $($ServerEdition -match 'Server 2022') { $Scenario = 'SecurityBaseline\Server\2022\MemberServer' }
-if $($ServerEdition -match 'Server 2025') { $Scenario = 'SecurityBaseline\WS2025\MemberServer'      }
+if ($ServerEdition -match 'Server 2022') { $Scenario = 'SecurityBaseline\Server\2022\MemberServer' }
+if ($ServerEdition -match 'Server 2025') { $Scenario = 'SecurityBaseline\WS2025\MemberServer'      }
 
 # Set security baselines defaults
 Set-OSConfigDesiredConfiguration -Scenario $Scenario -Default
