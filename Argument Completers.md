@@ -18,4 +18,5 @@ $s = {
 Register-ArgumentCompleter -CommandName Set-TimeZone -ParameterName Id -ScriptBlock $s
 ```
 
-`Set-TimeZone -id` ...
+`Set-TimeZone -id [TAB]`
+`Set-TimeZone -Id *eur*`...
