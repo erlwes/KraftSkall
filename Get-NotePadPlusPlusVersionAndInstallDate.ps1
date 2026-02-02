@@ -5,6 +5,8 @@
 # EXAMPLE 2:
 # 'server01', 'server02' | .\Get-NotePadPlusPlusVersionAndInstallDate.ps1
 
+# REQUIRES POWERSHELL 7 (Foreach -Parallel)
+
 param (
     [cmdletbinding()]
     [parameter(mandatory=$true, ValueFromPipeline=$true)]$ComputerNames    
