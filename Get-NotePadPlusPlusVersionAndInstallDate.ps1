@@ -1,3 +1,10 @@
+# EXAMPLE 1:
+# $ADServers = Get-ADComputer -Filter {Enabled -eq $true -and Operatingsystem -like '*windows server*'} | Select-Object -ExpandProperty Name
+# .\Get-NotePadPlusPlusVersionAndInstallDate.ps1 -ComputerNames $ADServers
+
+# EXAMPLE 2:
+# 'server01', 'server02' | .\Get-NotePadPlusPlusVersionAndInstallDate.ps1
+
 param (
     [cmdletbinding()]
     [parameter(mandatory=$true, ValueFromPipeline=$true)]$ComputerNames    
