@@ -1,14 +1,10 @@
 param (
     [cmdletbinding()]
-    [parameter(mandatory=$true, ValueFromPipeline=$true)][string]$ComputerNames    
+    [parameter(mandatory=$true, ValueFromPipeline=$true)]$ComputerNames    
 )
 begin {
     $stopw = [System.Diagnostics.Stopwatch]::StartNew()
-    $AllComputers = @()
-
-    if ($ComputerNames -eq 'AD') {
-        $AllComputers += Get-ADComputer -Filter {Enabled -eq $true -and Operatingsystem -like '*windows server*'} | Select-Object -ExpandProperty Name        
-    }
+    $AllComputers = @()   
 
     Function Write-Console {
         param(
@@ -35,9 +31,9 @@ begin {
     
 }
 process {
-    if (!$ComputerNames -eq 'AD') {
-        $allComputers += $ComputerNames
-    }
+    
+    $allComputers += $ComputerNames
+    
 }
 end {
     Write-Console -Level 0 -Message 'Start'
