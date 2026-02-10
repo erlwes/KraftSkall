@@ -99,6 +99,10 @@ Set-OSConfigDesiredConfiguration -Scenario AppControl -Name Policies -Value $pol
 ### Enforce - when all supplemental policies are made for non-windows applications, and 3076 events are gone from logs -> Enforce
 ```PwSh
 # Application Control for Business - Enforced
+
+Remove-OSConfigDesiredConfiguration -Scenario AppControl\WS2025\DefaultPolicy\Audit
+Remove-OSConfigDesiredConfiguration -Scenario AppControl\WS2025\AppBlockList\Audit
+
 Set-OSConfigDesiredConfiguration -Scenario AppControl\WS2025\DefaultPolicy\Enforce -Default
 Set-OSConfigDesiredConfiguration -Scenario AppControl\WS2025\AppBlockList\Enforce -Default
 ```
