@@ -1,5 +1,11 @@
 # WDAC / Appcontrol for business
 
+### Install Microsoft.OSConfig PowerShell-module
+```PwSh
+Install-Module -Name Microsoft.OSConfig -Scope AllUsers -Repository PSGallery -Force
+```
+
+
 ### Audit mode on
 ```PwSh
 # Application Control for Business - Audit
