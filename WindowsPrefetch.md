@@ -25,6 +25,7 @@ $Objects = Get-Content -LiteralPath $path | Where-Object { $_.Trim() -ne "" } | 
   $_ | ConvertFrom-Json
 }
 
+# PowerShell can not know the types of imported data, so we have to tell it whats what, so the sorting works :)
 $FixedObjects = $Objects | ForEach-Object {
     $o = $_
     $out = [pscustomobject]([ordered]@{})
