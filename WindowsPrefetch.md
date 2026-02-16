@@ -83,6 +83,6 @@ $FixedObjects = $Objects | ForEach-Object {
 
     $out
 }
-```
 
 $FixedObjects | Sort-Object RunCount -Descending | Format-Table SourceFilename, RunCount, Size, LastRun -Auto
+```
