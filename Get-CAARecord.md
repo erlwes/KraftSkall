@@ -70,3 +70,4 @@ function Get-CAARecordGoogle {
 
 ### Create Hex/RFC 3597 Syntax CAA Records for Windows DNS server
 `https://sslmate.com/caa/`
+`Add-DnsServerResourceRecord -ZoneName "domain.no" -Name "nameofthething" -Type "257" -RecordData "0009697373756577696C2020202020202020F3F3F3F6D"`
