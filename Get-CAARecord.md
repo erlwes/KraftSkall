@@ -67,3 +67,6 @@ function Get-CAARecordGoogle {
     }
 }
 ```
+
+### Create Hex/RFC 3597 Syntax CAA Records for Windows DNS server
+`https://sslmate.com/caa/`
